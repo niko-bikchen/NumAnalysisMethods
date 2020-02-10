@@ -34,6 +34,6 @@ x_0 = float(input('> '))
 print('Enter precision')
 eps = float(input('> '))
 
-print(newtons_method(functions[func]['f'], functions[func]['df'], x_0, eps))
+print(f'Solution for "{func}" is: {newtons_method(functions[func]["f"], functions[func]["df"], x_0, eps)}')
 
-# print(newtons_method(functions['x^3 - x^2 - 1']['f'], functions['x^3 - x^2 - 1']['df'], 1, 0.000000001))
+print(newtons_method(functions['x^3 - x^2 - 1']['f'], functions['x^3 - x^2 - 1']['df'], 1, 0.000000001))
