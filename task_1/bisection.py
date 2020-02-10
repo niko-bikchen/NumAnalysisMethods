@@ -33,9 +33,23 @@ functions: dict = {
     '10 + 6x - x^2': lambda x: 10 + 6 * x - x ** 2
 }
 
-print(bisection(functions['sin(x) - x'], [-1, 1], 0.000000001))
-print(bisection(functions['sin(x)'], [m.pi - 1, m.pi], 0.000000001))
-print(bisection(functions['log(x) - 1'], [2, 3], 0.000000001))
-print(bisection(functions['e^x - 2 + x'], [0, 2], 0.000000001))
+func_tups = list(zip(range(0, len(functions.keys())), functions.keys()))
+
+print('Pick a function number: ', func_tups)
+func_num = int(input('> '))
+func = func_tups[func_num][1]
+print('Enter left range bound')
+a = float(input('> '))
+print('Enter right range bound')
+b = float(input('> '))
+print('Enter precision')
+eps = float(input('> '))
+
+print(f'Solution for "{func}" is: {bisection(functions[func], [a, b], eps)}')
+
+# print(bisection(functions['sin(x) - x'], [-1, 1], 0.000000001))
+# print(bisection(functions['sin(x)'], [m.pi - 1, m.pi], 0.000000001))
+# print(bisection(functions['log(x) - 1'], [2, 3], 0.000000001))
+# print(bisection(functions['e^x - 2 + x'], [0, 2], 0.000000001))
 print(bisection(functions['x^2 + 10x - 3'], [-5, 5], 0.000000001))
-print(bisection(functions['10 + 6x - x^2'], [-5, 5], 0.000000001))
+# print(bisection(functions['10 + 6x - x^2'], [-5, 5], 0.000000001))

@@ -18,5 +18,17 @@ def fixed_point_iteration(func: Callable[[float], float],
     return x
 
 
+func_tups = list(zip(range(0, len(functions.keys())), functions.keys()))
+
+print('Pick a function number: ', func_tups)
+func_num = int(input('> '))
+func = func_tups[func_num][1]
+print('Enter x_0')
+x_0 = float(input('> '))
+print('Enter precision')
+eps = float(input('> '))
+
+print(f'Solution for "{func}" is: {fixed_point_iteration(functions[func], x_0, eps)}')
+
 print(fixed_point_iteration(functions['sqrt(x+9) + 1'], 4, 0.0000001))
-print(fixed_point_iteration(functions['e^x + 1 - sqrt(9 - x^2)'], 0.5, 0.0000001))
+# print(fixed_point_iteration(functions['e^x + 1 - sqrt(9 - x^2)'], 0.5, 0.0000001))
