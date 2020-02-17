@@ -30,5 +30,5 @@ eps = float(input('> '))
 
 print(f'Solution for "{func}" is: {fixed_point_iteration(functions[func], x_0, eps)}')
 
-print(fixed_point_iteration(functions['sqrt(x+9) + 1'], 4, 0.0000001))
+# print(fixed_point_iteration(functions['sqrt(x+9) + 1'], 4, 0.0000001))
 # print(fixed_point_iteration(functions['e^x + 1 - sqrt(9 - x^2)'], 0.5, 0.0000001))
