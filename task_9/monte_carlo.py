@@ -21,11 +21,17 @@ def calculate_monte_carlo(a, b, f, n):
 
 N = 100000
 
-print(calculate_monte_carlo(0, np.pi, np.sin, N))
+functions = [
+    lambda x: np.cos(x),
+    lambda x: np.sin(x),
+    lambda x: 2 * x ** 2
+]
+
+print(calculate_monte_carlo(0, np.pi, functions[1], N))
 
 answers = []
 
-for _ in range(1000):
+for _ in range(100):
     answers.append(calculate_monte_carlo(0, np.pi, np.sin, N))
 
 # Printing out first 5 answers

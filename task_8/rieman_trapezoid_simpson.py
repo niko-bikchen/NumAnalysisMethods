@@ -56,6 +56,12 @@ def calculate_simpson(a, b, f, n):
         return (section_length / 3) * np.sum(ys[0:-1:2] + 4 * ys[1::2] + ys[2::2])
 
 
-print(f'Riemann: {calculate_riemann_sum(0, np.pi, np.sin, 20)}')
-print(f'Trapezoid: {calculate_trapezoid_rule(0, np.pi, np.sin, 20)}')
-print(f'Simpson: {calculate_simpson(0, np.pi, np.sin, 20)}')
+functions = [
+    lambda x: np.cos(x),
+    lambda x: np.sin(x),
+    lambda x: 2 * x ** 2
+]
+
+print(f'Riemann: {calculate_riemann_sum(0, np.pi, functions[1], 20)}')
+print(f'Trapezoid: {calculate_trapezoid_rule(0, np.pi, functions[1], 20)}')
+print(f'Simpson: {calculate_simpson(0, np.pi, functions[1], 20)}')
