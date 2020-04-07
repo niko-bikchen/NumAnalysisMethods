@@ -31,7 +31,7 @@ for _ in range(1000):
 # Printing out first 5 answers
 print(answers[0:5])
 
-# Plotting distribution of the calculated area
+# Plotting distribution of the calculated areas
 plt.hist(answers, bins=30, ec='black')
 plt.title('Calculated areas of distribution')
 plt.xlabel('Areas')
