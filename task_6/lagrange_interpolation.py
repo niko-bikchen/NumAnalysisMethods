@@ -9,7 +9,9 @@ import math
 
 # <Test data 2>
 x_values = np.array([-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1], float)
-y_values = np.array([math.atan(2 * val) for val in x_values], float)
+# y_values = np.array([math.atan(2 * val) for val in x_values], float)
+y_values = np.array(
+    [0.5403023059, 0.7316888689, 0.8775825619, 0.9689124217, 1, 0.9689124217, 0.8775825619, 0.7316888689, 0.5403023059])
 
 
 # </Test data 2>
@@ -53,10 +55,10 @@ P = lambdify(x, polynomial)
 # </Test set 1>
 
 # <Test set 2>
-print(f'For x = -0.9: {P(-0.9)}')
-print(f'For x = -0.3: {P(-0.3)}')
-print(f'For x = 0.3: {P(0.3)}')
-print(f'For x = 0.9: {P(0.9)}')
+print(f'For x = -0.85: {P(-0.85)}')
+print(f'For x = -0.35: {P(-0.35)}')
+print(f'For x = 0.35: {P(0.35)}')
+print(f'For x = 0.85: {P(0.85)}')
 # </Test set 2>
 
 # </Tests>
