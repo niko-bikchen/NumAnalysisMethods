@@ -46,26 +46,18 @@ def chebyshev_interpolation(n, f, x):
     summa = 0
 
     for i in range(1, n + 1):
+        summa += 2 * a_sum(n, f, i) * cheb_poli(i, x)
 
-        if i == 1:
-            summa += a_sum(n, f, 1) * cheb_poli(1, x) / (n + 1)
-        else:
-            summa += 2 * a_sum(n, f, i) * cheb_poli(i, x) / (n + 1)
-
-    return summa
+    return summa / (n + 1)
 
 
 def custom_chebyshev_interpolation(n, values, x):
     summa = 0
 
     for i in range(1, n + 1):
+        summa += 2 * custom_a_sum(n, values, 1) * cheb_poli(i, x)
 
-        if i == 1:
-            summa += custom_a_sum(n, values, 1) * cheb_poli(1, x) / (n + 1)
-        else:
-            summa += 2 * custom_a_sum(n, values, 1) * cheb_poli(i, x) / (n + 1)
-
-    return summa
+    return summa / (n + 1)
 
 
 # f_values = [-1.1009971305064690925, -1.0471975511965977461,
@@ -87,4 +79,11 @@ def custom_chebyshev_interpolation(n, values, x):
 
 x_val = Symbol('x')
 polinomial = simplify(chebyshev_interpolation(8, lambda arg: atan(arg * 2), x_val))
+
 print(polinomial)
+
+P = lambdify(x_val, polinomial)
+print(f'Chebyshev polinomial for -0.9: {P(-0.9)}')
+print(f'Chebyshev polinomial for -0.3: {P(-0.3)}')
+print(f'Chebyshev polinomial for 0.3: {P(0.3)}')
+print(f'Chebyshev polinomial for 0.9: {P(0.9)}')
