@@ -70,14 +70,23 @@ def calculate_error(m, a, b, n, mode):
 functions = [
     lambda x: np.cos(x),
     lambda x: np.sin(x),
-    lambda x: 2 * x ** 2
+    lambda x: 2 * x ** 2,
+    lambda x: np.cos(3 * x / 2)
 ]
 
-print(f'Riemann: {calculate_riemann_sum(0, 3 * np.pi / 4, np.cos, 10)}')
-print(f'Trapezoid: {calculate_trapezoid_rule(0, 3 * np.pi / 4, np.cos, 10)}')
-print(f'Simpson: {calculate_simpson(0, 3 * np.pi / 4, np.cos, 10)}')
+riemann = calculate_riemann_sum(np.pi / 3, 2 * np.pi / 3, functions[3], 10)
+trapezoid = calculate_trapezoid_rule(np.pi / 3, 2 * np.pi / 3, functions[3], 10)
+simpson = calculate_simpson(np.pi / 3, 2 * np.pi / 3, functions[3], 10)
 
-print(f'Riemann error: {calculate_error([-1.0, 0.7071067811865475, -1.0], 0, 3 * np.pi / 4, 10, "riemann")}')
+print(f'Riemann: {riemann}')
+print(f'Trapezoid: {trapezoid}')
+print(f'Simpson: {simpson}\n')
+
+print(f'Riemann theoretical error: {calculate_error([0, 9 / 4], np.pi / 3, 2 * np.pi / 3, 10, "riemann")}')
 print(
-    f'Trapezoid error: {calculate_error([-1.0, 0.7071067811865475, -1.0], 0, 3 * np.pi / 4, 10, "trapezoid")}')
-print(f'Simpson error: {calculate_error([1.0, -0.7071067811865475, 1.0], 0, 3 * np.pi / 4, 10, "simpson")}')
+    f'Trapezoid theoretical error: {calculate_error([0, 9 / 4], np.pi / 3, 2 * np.pi / 3, 10, "trapezoid")}')
+print(f'Simpson theoretical error: {calculate_error([0, 81 / 16], np.pi / 3, 2 * np.pi / 3, 10, "simpson")}\n')
+
+print(f'Riemann real error: {np.abs((-2 / 3) - riemann)}')
+print(f'Trapezoid real error: {np.abs((-2 / 3) - trapezoid)}')
+print(f'Simpson real error: {np.abs((-2 / 3) - simpson)}')
